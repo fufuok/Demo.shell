@@ -23,8 +23,6 @@ function chk_ip_for_domain() {
     ((port == 443)) && scheme="https://"
 
     for i in $(seq 1 $count); do
-        # 重试时延迟 1 秒
-        ((i > 1)) && sleep 1
         if [[ -n "${ip}" ]]; then
             # 指定 IP 访问
             result_code=$(${curl_cmd} --resolve "${domain}:${port}:${ip}" "${scheme}${domain}${uri}")
@@ -33,6 +31,8 @@ function chk_ip_for_domain() {
             result_code=$(${curl_cmd} "${scheme}${domain}${uri}")
         fi
         [[ "${http_code}" == "${result_code}" ]] && break
+        # 重试时延迟 1 秒
+        ((i > 1)) && sleep 1
     done
 
     # 返回错误日志
