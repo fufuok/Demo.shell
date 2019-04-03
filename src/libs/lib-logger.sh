@@ -7,5 +7,5 @@
 function logger() {
     local text=${1:-""}
     local file=${2:-"/var/log/${M_NAME}.log"}
-    [[ -n "${text}" ]] && echo "$(date +%F_%T) ${text}" >>"${file}"
+    [[ -n "${text}" ]] && echo "$(date '+%F %T') ${text}" >>"${file}"
 }

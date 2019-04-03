@@ -14,7 +14,7 @@ function exec_conf_async() {
 
     # 检查被调用函数
     if [[ $(type -t "${func_args[0]}") != "function" ]]; then
-        echo "Check function: ${func_args[@]}" && usage
+        echo "Check function: ${func_args[*]}" && usage
         return 1
     fi
 
@@ -30,7 +30,7 @@ function exec_conf_async() {
         # 排除空行和注释行
         [[ -z "${conf}" ]] || [[ "${conf:0:1}" == "#" ]] && continue
         # 反射
-        eval "${func_args[@]} ${conf} &"
+        eval "${func_args[*]} ${conf} &"
         # 每 20 个进程等待 1 秒
         ((running_n > 0)) && [[ $((i % running_n)) == 0 ]] && sleep "${sleep_n}"
         ((i++))

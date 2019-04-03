@@ -11,5 +11,5 @@ function chk_fping() {
     [[ -z "${ip}" ]] && return 1
 
     # 存活检查
-    fping -qr3 "${ip}" || echo "$@ fping_unreachable"
+    fping -qr3 "${ip}" || echo "$* fping_unreachable"
 }

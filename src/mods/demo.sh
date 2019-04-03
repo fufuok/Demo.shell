@@ -16,7 +16,7 @@ function main() {
     echo "模块名称, M_NAME: ${M_NAME}"
     echo "参数个数: $#"
     echo "第一个参数: ${1:-''}"
-    echo "所有参数: $@"
+    echo "所有参数: $*"
 }
 
 main "$@"

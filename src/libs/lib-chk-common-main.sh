@@ -7,7 +7,8 @@
 #
 function chk_common_async() {
     # 执行域名检查, 成功时结果为空
-    local result=$("$@")
+    local result
+    result=$("$@")
     if [[ -n "${result}" ]]; then
         # 发出报警, 记录异常日志
         send_alarm "${result}" "${API}"
