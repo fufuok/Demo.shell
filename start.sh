@@ -4,6 +4,7 @@
 # usage: ./start.sh module-shell-name module-shell-args
 # usage: ./start.sh chk-apex-domain
 # usage: ./start.sh chk-apex-domain ./src/chk-apex-domain.conf 2 3
+# shellcheck disable=SC1090
 # set -x
 # set -o nounset
 # set -o errexit

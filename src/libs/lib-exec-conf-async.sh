@@ -7,14 +7,15 @@
 # set -x
 #
 function exec_conf_async() {
-    local -a func_args=($1)
+    local func_args=$1
+    local func_name=${1%% *}
     local conf_file=${2:-"${SRC}/${M_NAME}.conf"}
     local -i running_n=${3:-20}
     local -i sleep_n=${4:-1}
 
     # 检查被调用函数
-    if [[ $(type -t "${func_args[0]}") != "function" ]]; then
-        echo "Check function: ${func_args[*]}" && usage
+    if [[ $(type -t "${func_name}") != "function" ]]; then
+        echo "Check function: ${func_args}" && usage
         return 1
     fi
 
@@ -26,11 +27,11 @@ function exec_conf_async() {
 
     # 循环调用函数
     local i=1
-    while read conf; do
+    while read -r conf; do
         # 排除空行和注释行
         [[ -z "${conf}" ]] || [[ "${conf:0:1}" == "#" ]] && continue
         # 反射
-        eval "${func_args[*]} ${conf} &"
+        eval "${func_args} ${conf} &"
         # 每 20 个进程等待 1 秒
         ((running_n > 0)) && [[ $((i % running_n)) == 0 ]] && sleep "${sleep_n}"
         ((i++))

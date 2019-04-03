@@ -2,6 +2,7 @@
 # author: Fufu, 2019-03-29
 # 绝地求生全业务监控(示例代码)
 # usage: ./start.sh pubg-monitor
+# shellcheck disable=SC1090
 # set -x
 #
 export API="http://xxx/?info="
