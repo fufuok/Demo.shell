@@ -2,7 +2,7 @@
 # author: Fufu, 2019-03-03
 # 监控 Origin 平台 Apex 英雄的域名访问是否正常
 # usage: ./start.sh chk-apex-domain
-# usage: ./start.sh chk-apex-domain ./src/chk-apex-domain.conf 2 3
+# usage: ./start.sh chk-apex-domain ./src/chk-apex-domain.conf 20
 # shellcheck disable=SC1090
 # set -x
 #

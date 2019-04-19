@@ -1,9 +1,9 @@
 #!/bin/bash
 # author: Fufu, 2019-03-28
 # 调用相应的函数处理配置文件内容
-# usage: exec_conf_async "func_name func_args" conf-file running_n sleep_n
-# usage: exec_conf_async chk_domain_async ./src/chk-pubg-domain.conf 10 2
-# usage: exec_conf_async 'chk_common_async chk_fping' ./src/chk-pubg-fping.conf 10 2
+# usage: exec_conf_async "func_name func_args" conf-file running_n
+# usage: exec_conf_async chk_domain_async ./src/chk-pubg-domain.conf 10
+# usage: exec_conf_async 'chk_common_async chk_fping' ./src/chk-pubg-fping.conf 20
 # set -x
 #
 function exec_conf_async() {
@@ -11,7 +11,6 @@ function exec_conf_async() {
     local func_name=${1%% *}
     local conf_file=${2:-"${SRC}/${M_NAME}.conf"}
     local -i running_n=${3:-20}
-    local -i sleep_n=${4:-1}
 
     # 检查被调用函数
     if [[ $(type -t "${func_name}") != "function" ]]; then
@@ -32,8 +31,8 @@ function exec_conf_async() {
         [[ -z "${conf}" ]] || [[ "${conf:0:1}" == "#" ]] && continue
         # 反射
         eval "${func_args} ${conf} &"
-        # 每 20 个进程等待 1 秒
-        ((running_n > 0)) && [[ $((i % running_n)) == 0 ]] && sleep "${sleep_n}"
+        # 并发 20 个进程
+        ((running_n > 0)) && [[ $((i % running_n)) == 0 ]] && wait
         ((i++))
     done <"${conf_file}"
     wait
