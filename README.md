@@ -26,7 +26,7 @@
 ./start.sh pubg-monitor
 ./start.sh chk-apex-domain
 ./start.sh chk-apex-domain ./src/chk-apex-domain.conf
-./start.sh chk-apex-domain ./src/chk-apex-domain.conf 2 3
+./start.sh chk-apex-domain ./src/chk-apex-domain.conf 20
 ```
 
 ## 目录
