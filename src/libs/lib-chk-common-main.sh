@@ -2,7 +2,7 @@
 # author: Fufu, 2019-03-29
 # 通用检测方法: 加载配置, 执行检测, 写入日志, 发出报警
 # usage: chk_common_main lib_func_name conf_file running_n sleep_n
-# usage: chk_common_main chk_fping "${SRC}/chk-pubg-fping.conf" 1 2
+# usage: chk_common_main chk_fping "${ETC}/chk-pubg-fping.conf" 1 2
 # shellcheck disable=SC1090
 # set -x
 #

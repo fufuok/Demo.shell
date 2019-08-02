@@ -8,6 +8,7 @@
 function main() {
     echo "环境变量, PATH: ${PATH}"
     echo "工作目录, BASE: ${BASE}"
+    echo "配置目录, ETC: ${ETC}"
     echo "资源目录, SRC: ${SRC}"
     echo "模块目录, MODS: ${MODS}"
     echo "类库目录, LIBS: ${LIBS}"

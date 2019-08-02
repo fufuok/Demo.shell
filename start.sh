@@ -3,7 +3,7 @@
 # 入口文件, Shell 模块调用, 传递模块参数
 # usage: ./start.sh module-shell-name module-shell-args
 # usage: ./start.sh chk-apex-domain
-# usage: ./start.sh chk-apex-domain ./src/chk-apex-domain.conf 2 3
+# usage: ./start.sh chk-apex-domain ./etc/chk-apex-domain.conf 2 3
 # shellcheck disable=SC1090
 # set -x
 # set -o nounset
@@ -12,6 +12,7 @@
 export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
 readonly BASE=$(cd "$(dirname "$0")" && pwd)
 readonly NAME=$(basename "$0" .sh)
+readonly ETC="${BASE}/etc"
 readonly SRC="${BASE}/src"
 readonly MODS="${SRC}/mods"
 readonly LIBS="${SRC}/libs"

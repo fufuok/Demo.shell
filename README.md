@@ -25,8 +25,8 @@
 ./start.sh demo arg1 arg...
 ./start.sh pubg-monitor
 ./start.sh chk-apex-domain
-./start.sh chk-apex-domain ./src/chk-apex-domain.conf
-./start.sh chk-apex-domain ./src/chk-apex-domain.conf 20
+./start.sh chk-apex-domain ./etc/chk-apex-domain.conf
+./start.sh chk-apex-domain ./etc/chk-apex-domain.conf 20
 ```
 
 ## 目录
@@ -35,7 +35,8 @@
 - src: 资源目录
     - libs: 公共类库目录, 由 mods 脚本调用
     - mods: 模块目录, 脚本主要逻辑处理, 根据 start.sh 执行时第一个参数调用
-    - ...: 其他文件, 通常为 conf 等配置文件
+    - ...: 其他文件或文件夹, 比如 cron.d 等
+- etc: 配置文件目录, conf 文件等
 
 ## 说明
 

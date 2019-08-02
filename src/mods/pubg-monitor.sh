@@ -14,12 +14,12 @@ export API="http://xxx/?info="
 source "${LIBS}/lib-chk-common-main.sh"
 
 # 检测 PUBG 大厅域名等
-chk_common_main chk_ip_for_domain "${SRC}/chk-pubg-domain.conf" &
+chk_common_main chk_ip_for_domain "${ETC}/chk-pubg-domain.conf" &
 
 # fping blhp.www.vivox.com
-chk_common_main chk_fping "${SRC}/chk-pubg-fping.conf" &
+chk_common_main chk_fping "${ETC}/chk-pubg-fping.conf" &
 
 # telnet/nc prod-live-entry
-chk_common_main chk_nc "${SRC}/chk-pubg-nc.conf" &
+chk_common_main chk_nc "${ETC}/chk-pubg-nc.conf" &
 
 wait

@@ -2,14 +2,14 @@
 # author: Fufu, 2019-03-28
 # 调用相应的函数处理配置文件内容
 # usage: exec_conf_async "func_name func_args" conf-file running_n
-# usage: exec_conf_async chk_domain_async ./src/chk-pubg-domain.conf 10
-# usage: exec_conf_async 'chk_common_async chk_fping' ./src/chk-pubg-fping.conf 20
+# usage: exec_conf_async chk_domain_async "${ETC}/chk-pubg-domain.conf" 10
+# usage: exec_conf_async 'chk_common_async chk_fping' "${ETC}/chk-pubg-fping.conf" 20
 # set -x
 #
 function exec_conf_async() {
     local func_args=$1
     local func_name=${1%% *}
-    local conf_file=${2:-"${SRC}/${M_NAME}.conf"}
+    local conf_file=${2:-"${ETC}/${M_NAME}.conf"}
     local -i running_n=${3:-20}
 
     # 检查被调用函数
