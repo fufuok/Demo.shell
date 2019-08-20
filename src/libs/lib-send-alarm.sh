@@ -7,5 +7,9 @@
 function send_alarm() {
     local info=${1// /:}
     local api_url=${2:-"http://xxx/?info="}
+
+    # hook
+    [[ $(type -t send_alarm_before) == "function" ]] && send_alarm_before "$@"
+
     curl "${api_url}${info}" >/dev/null 2>&1
 }
