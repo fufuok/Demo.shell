@@ -13,6 +13,9 @@ export API="http://xxx/?info="
 # 引入通用检测方法
 source "${LIBS}/lib-chk-common-main.sh"
 
+# hook 示例
+source "${MODS}/hook-restart-nproxy.sh"
+
 # 检测 PUBG 大厅域名等
 chk_common_main chk_ip_for_domain "${ETC}/chk-pubg-domain.conf" &
 

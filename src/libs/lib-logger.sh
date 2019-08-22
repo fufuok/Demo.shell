@@ -9,7 +9,7 @@ function logger() {
     local file=${2:-"/var/log/${M_NAME}.log"}
 
     # hook
-    [[ $(type -t logger_before) == "function" ]] && logger_before "$@"
+    [[ $(type -t hook_logger_before) == "function" ]] && hook_logger_before "$@"
 
     [[ -n "${text}" ]] && echo "$(date '+%F %T') ${text}" >>"${file}"
 }
